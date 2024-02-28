@@ -17,4 +17,4 @@ Para ejecutar los ejercicios de una actividad específica, siga estos pasos:
 ```python
 python ejercicioK.py
 ```
-con K el número del ejercicio específico que desea ejecutar.
+dónde K es el número del ejercicio específico que desea ejecutar.
