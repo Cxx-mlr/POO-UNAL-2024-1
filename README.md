@@ -21,7 +21,9 @@ dónde K es el número del ejercicio específico que desea ejecutar.
 
 ### Compatibilidad con Consolas
 
-**Nota:** La consola Git Bash y Termux (Android) no son compatibles con los ejercicios de este repositorio. Se ha testeado y confirmado que los ejercicios funcionan correctamente en PowerShell, Símbolo del sistema de Windows (CMD), Git CMD y WSL 2 con las Distribuciones ParrotOS y Kali Linux.
+Se ha testeado y confirmado que los ejercicios funcionan correctamente en **PowerShell**, **Símbolo del sistema de Windows (CMD)**, **Git CMD** y **WSL 2** con las Distribuciones **ParrotOS** y **Kali Linux**.
+
+**Nota:** La consola **Git Bash** y **Termux (Android)** no son compatibles con los ejercicios de este repositorio.
 
 **TODO:**
 1. Corregir compatibilidad con Git Bash
