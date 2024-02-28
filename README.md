@@ -18,3 +18,11 @@ Para ejecutar los ejercicios de una actividad específica, siga estos pasos:
 python ejercicioK.py
 ```
 dónde K es el número del ejercicio específico que desea ejecutar.
+
+### Compatibilidad con Consolas
+
+**Nota:** La consola Git Bash y Termux (Android) no son compatibles con los ejercicios de este repositorio. Se ha testeado y confirmado que los ejercicios funcionan correctamente en PowerShell, Símbolo del sistema de Windows (CMD), Git CMD y WSL 2 con las Distribuciones ParrotOS y Kali Linux.
+
+**TODO:**
+1. Corregir compatibilidad con Git Bash
+2. Corregir compatibilidad con Termux
