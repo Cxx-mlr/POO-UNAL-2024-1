@@ -2,15 +2,15 @@
 
 Este repositorio contiene una serie de actividades académicas realizadas en el contexto del curso de Programación Orientada a Objetos (POO). Cada actividad aborda distintos temas y ejercicios relacionados con el paradigma de programación orientada a objetos.
 
-## Instrucciones para Ejecutar
+## Instrucciones para Ejecutar (python>=3.10)
 
 Para ejecutar los ejercicios de una actividad específica, siga estos pasos:
 
 1. **Clonar el Repositorio**: Utilice el siguiente comando en su terminal para clonar el repositorio:
-<br/>`git clone "https://github.com/Cxx-mlr/POO-UNAL-2024-1.git"`
+<br/>`git clone --branch Actividad_1 "https://github.com/Cxx-mlr/POO-UNAL-2024-1.git"`
 
-2. **Navegar al Directorio de la Actividad Deseada**: Una vez clonado, acceda al directorio de la actividad que le interese. Por ejemplo, para la **Actividad 1**, ejecute:
-<br/>`cd "./POO-UNAL-2024-1/Actividad 1"`
+2. **Navegar al Directorio de la Actividad**: Una vez clonado, acceda al directorio de la actividad. Ejecute:
+<br/>`cd "./POO-UNAL-2024-1/Actividad_1"`
 
 
 3. **Ejecutar el ejercicio correspondiente**: Para ejecutar el ejercicio número **K**, utilice el siguiente comando:
