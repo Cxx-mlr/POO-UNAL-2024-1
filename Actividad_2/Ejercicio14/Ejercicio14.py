@@ -19,7 +19,8 @@ class Ejercicio14:
         print(f"\tVentas del departamento {dep_3.id}: ${dep_3.sales}")
         print()
         print(f"\tVentas totales de la empresa: ${Department.total_sales}")
-        print(f"\tPorcentaje del 33% de las ventas totales de la empresa: ${(Department.total_sales * 0.33):.2f}")
+        print("\tPorcentaje del 33% de las ventas totales de la empresa: " \
+              f"${(Department.total_sales * 0.33):.2f}")
         print()
         print(f"\tSalario mensual del departamento {dep_1.id}: ${dep_1.calculate_monthly_salary()}")
         print(f"\tSalario mensual del departamento {dep_2.id}: ${dep_2.calculate_monthly_salary()}")
