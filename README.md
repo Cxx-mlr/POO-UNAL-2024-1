@@ -20,11 +20,10 @@ python NombreDelEjercicio
 
 Por ejemplo para los ejercicios, `Ejercicio7` y `PruebaFiguras` utilice los comandos:
 ```python
-python Ejercicio17
+python Ejercicio7
 python PruebaFiguras
 ```
-
-no debe usar el sufijo `.py`
+**no debe usar el sufijo `.py`**
 
 ### Compatibilidad con Consolas
 
