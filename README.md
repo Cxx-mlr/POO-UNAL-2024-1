@@ -4,7 +4,7 @@ Este repositorio contiene una serie de actividades académicas realizadas en el 
 
 ## Instrucciones para Ejecutar (python>=3.10)
 
-Para ejecutar los ejercicios de una actividad específica, siga estos pasos:
+Para ejecutar los ejercicios, siga estos pasos:
 
 1. **Clonar el Repositorio**: Utilice el siguiente comando en su terminal para clonar el repositorio:
 <br/>`git clone --branch Actividad_1 "https://github.com/Cxx-mlr/POO-UNAL-2024-1.git"`
