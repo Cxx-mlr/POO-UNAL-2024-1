@@ -18,10 +18,10 @@ class TriánguloRectángulo:
     def calcularHipotenusa(self) -> float:
         return math.sqrt(math.pow(self.altura, 2) + math.pow(self.base, 2))
     
-    def determinarTipoTriángulo(self) -> float:
+    def determinarTipoTriángulo(self) -> str:
         if self.base == self.altura and self.base == self.calcularHipotenusa():
-            print("Es un triángulo Equilátero")
+            return "Es un triángulo Equilátero"
         elif self.base != self.altura and self.base != self.calcularHipotenusa():
-            print("Es un triángulo Escaleno")
+            return "Es un triángulo Escaleno"
         else:
-            print("Es un triángulo Isósceles")
+            return"Es un triángulo Isósceles"

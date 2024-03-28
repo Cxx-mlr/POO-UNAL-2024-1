@@ -1,0 +1,25 @@
+Screen {
+    align: center middle;
+}
+
+#main-panel {
+    layout: grid;
+    grid-size: 1;
+    grid-rows: auto auto auto auto auto auto auto auto auto auto auto 1fr;
+    grid-gutter: 1;
+    width: 80%;
+    height: 100%;
+    border: solid $accent;
+    min-height: 50;
+}
+
+#description-label {
+    padding: 0 0 0 1;
+}
+
+#result-label {
+    border: solid cyan;
+    width: 100%;
+    height: 100%;
+    row-span: 2;
+}

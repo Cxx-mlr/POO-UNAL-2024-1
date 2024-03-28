@@ -38,9 +38,3 @@ class Employee:
         withholding_tax = (self.withholding_tax_percentage / 100) * self.calculate_gross_salary()
 
         return self.calculate_gross_salary() - withholding_tax
-    
-    def __str__(self) -> str:
-        return (f"\tCódigo: {self.id}" +
-                f"\n\tNombre: {self.name}" +
-                f"\n\tSalario bruto: {self.calculate_gross_salary():,}" +
-                f"\n\tSalario neto: {self.calculate_net_salary():,}")
