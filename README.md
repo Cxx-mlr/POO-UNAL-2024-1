@@ -6,6 +6,9 @@ Este repositorio contiene una serie de actividades académicas realizadas en el 
 
 Para ejecutar los ejercicios, siga estos pasos:
 
+> Antes de ejecutar los ejercicios, es necesario contar con la biblioteca Textual instalada. Puede instalarla ejecutando el siguiente comando en su terminal:
+<br/>`python -m pip install -U textual`
+
 1. **Clonar el Repositorio**: Utilice el siguiente comando en su terminal para clonar el repositorio:
 <br/>`git clone --branch Actividad_3 "https://github.com/Cxx-mlr/POO-UNAL-2024-1.git"`
 
