@@ -1,4 +1,4 @@
-class Ejercicio7:
+class Ejercicio7():
     @staticmethod
     def main():
         a = float(input("Introduzca un número a comparar: "))
