@@ -6,20 +6,38 @@ from TriánguloRectángulo import TriánguloRectángulo
 class PruebaFiguras:
     @staticmethod
     def main():
-        figura1: Círculo = Círculo(2)
-        figura2: Rectángulo = Rectángulo(1, 2)
-        figura3: Cuadrado = Cuadrado(3)
-        figura4: TriánguloRectángulo = TriánguloRectángulo(5, 3)
+        radio_círculo = float(input("Ingrese el valor del radio del círculo: "))
+        círculo: Círculo = Círculo(radio_círculo)
 
-        print(f"El área del círculo es = {figura1.calcularÁrea()}")
-        print(f"El perímetro del círculo es = {figura1.calcularPerímetro()}")
+        base_rectángulo = float(input("Ingrese el valor de la base del rectángulo: "))
+        altura_rectángulo = float(input("Ingrese el valor de la altura del rectángulo: "))
+        rectángulo: Rectángulo = Rectángulo(
+            base=base_rectángulo,
+            altura=altura_rectángulo
+        )
+
+        lado_cuadrado = float(input("Ingrese el valor del lado del cuadrado: "))
+        cuadrado: Cuadrado = Cuadrado(
+            lado=lado_cuadrado
+        )
+
+        base_triángulo_rectángulo = float(input("Ingrese el valor de la base del triángulo rectángulo: "))
+        altura_triángulo_rectángulo = float(input("Ingrese el valor de la altura del triángulo rectángulo: "))
+        triángulo_rectángulo: TriánguloRectángulo = TriánguloRectángulo(
+            base=base_triángulo_rectángulo,
+            altura=altura_triángulo_rectángulo
+        )
+
+        print("\n\n")
+        print(f"El área del círculo es = {círculo.calcularÁrea()}")
+        print(f"El perímetro del círculo es = {círculo.calcularPerímetro()}")
         print()
-        print(f"El área del rectángulo es = {figura2.calcularÁrea()}")
-        print(f"El perímetro del rectángulo es = {figura2.calcularPerímetro()}")
+        print(f"El área del rectángulo es = {rectángulo.calcularÁrea()}")
+        print(f"El perímetro del rectángulo es = {rectángulo.calcularPerímetro()}")
         print()
-        print(f"El área del cuadrado es = {figura3.calcularÁrea()}")
-        print(f"El perímetro del cuadrado es = {figura3.calcularPerímetro()}")
+        print(f"El área del cuadrado es = {cuadrado.calcularÁrea()}")
+        print(f"El perímetro del cuadrado es = {cuadrado.calcularPerímetro()}")
         print()
-        print(f"El área del triángulo es = {figura4.calcularÁrea()}")
-        print(f"El perímetro del triángulo es = {figura4.calcularPerímetro()}")
-        figura4.determinarTipoTriángulo()
+        print(f"El área del triángulo es = {triángulo_rectángulo.calcularÁrea()}")
+        print(f"El perímetro del triángulo es = {triángulo_rectángulo.calcularPerímetro()}")
+        triángulo_rectángulo.determinarTipoTriángulo()
