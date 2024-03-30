@@ -64,10 +64,7 @@ class Ejercicio18(App[None]):
             yield Static(id="result-label")
 
     def on_input_changed(self, event: Input.Changed):
-        if getattr(event.validation_result, "is_valid", True):
-            pass
-        else:
-            self.notify("\n".join(event.validation_result.failure_descriptions), severity="error")
+        if not getattr(event.validation_result, "is_valid", True):
             return
         
         id_input = self.query_one("#id", Input)

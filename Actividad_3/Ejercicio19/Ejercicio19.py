@@ -30,10 +30,7 @@ class Ejercicio19(App[None]):
             yield Static(id="result-label")
 
     def on_input_changed(self, event: Input.Changed):
-        if getattr(event.validation_result, "is_valid", True):
-            pass
-        else:
-            self.notify("\n".join(getattr(event.validation_result, "failure_descriptions", [])), severity="error")
+        if not getattr(event.validation_result, "is_valid", True):
             return
 
         side_length_input = self.query_one("#side-length")
@@ -45,10 +42,10 @@ class Ejercicio19(App[None]):
         else:
             if side_length_input.value:
                 eq_triangle: EquilateralTriangle = EquilateralTriangle(side_length=side_length)
-                renderable =  f"[yellow]Se muestra la información del Triángulo Equilátero:[/]" \
-                    f"\n\t[magenta]Perímetro[/]: [green]{eq_triangle.calculate_perimeter()}[/]" \
-                    f"\n\t[magenta]Altura   [/]: [green]{eq_triangle.calculate_height()}[/]" \
-                    f"\n\t[magenta]Área     [/]: [green]{eq_triangle.calculate_area()}[/]"
+                #renderable =  f"[yellow]Se muestra la información del Triángulo Equilátero:[/]" \
+                renderable = f"[magenta]Perímetro[/]: [green]{eq_triangle.calculate_perimeter()}[/]" \
+                    f"\n[magenta]Altura   [/]: [green]{eq_triangle.calculate_height()}[/]" \
+                    f"\n[magenta]Área     [/]: [green]{eq_triangle.calculate_area()}[/]"
                 self.query_one("#result-label", Static).update(renderable)
             else:
                 self.query_one("#result-label", Static).update("")

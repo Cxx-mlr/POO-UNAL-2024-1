@@ -1,9 +1,10 @@
 from __future__ import annotations
 
-from textual.app import App, ComposeResult
-from textual.widgets import Input, Label, Header, Static
+from textual.app import App, ComposeResult, on
+from textual.widgets import Input, Header, Static
 
 from textual.containers import Container
+from utils.widgets import InputWithLabel
 
 class Ejercicio7(App[None]):
     CSS_PATH = "./main.tcss"
@@ -16,15 +17,17 @@ class Ejercicio7(App[None]):
                 "primer número ingresado es [green][u]mayor[/][/], " \
                 "[red][u]menor[/][/] o [blue][u]igual[/][/] que el segundo número[/i]",
                 id="description-label")
-            yield Input(id="a", type="number", placeholder="Ingrese el primer número...", valid_empty=True)
-            yield Input(id="b", type="number", placeholder="Ingrese el segundo número...", valid_empty=True)
+            yield InputWithLabel(id="a", type="number", placeholder="Ingrese el primer número...", valid_empty=True)
+            yield InputWithLabel(id="b", type="number", placeholder="Ingrese el segundo número...", valid_empty=True)
             yield Static(id="result-label")
 
+    @on(Input.Changed, "#a,#b")
+    def handle_changed_a(self, event: Input.Changed):
+        pass
+
     def on_input_changed(self, event: Input.Changed):
-        if getattr(event.validation_result, "is_valid", True):
-            pass
-        else:
-            self.notify("\n".join(getattr(event.validation_result, "failure_descriptions", [])), severity="error")
+        if not getattr(event.validation_result, "is_valid", True):
+            return
         
         a_input = self.query_one("#a", Input)
         b_input = self.query_one("#b", Input)

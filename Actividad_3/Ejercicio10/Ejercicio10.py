@@ -56,10 +56,7 @@ class Ejercicio10(App[None]):
             yield Static(id="result-label")
 
     def on_input_changed(self, event: Input.Changed):
-        if getattr(event.validation_result, "is_valid", True):
-            pass
-        else:
-            self.notify("\n".join(getattr(event.validation_result, "failure_descriptions", [])), severity="error")
+        if not getattr(event.validation_result, "is_valid", True):
             return
 
         registration_number_input = self.query_one("#registration-number", Input)
@@ -96,7 +93,7 @@ class Ejercicio10(App[None]):
         except ValueError:
             return False
         else:
-            return True
+            return _ >= 0
 
     @staticmethod
     def main():
