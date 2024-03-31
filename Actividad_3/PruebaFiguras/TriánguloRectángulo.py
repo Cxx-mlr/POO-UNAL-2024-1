@@ -24,4 +24,4 @@ class TriánguloRectángulo:
         elif self.base != self.altura and self.base != self.calcularHipotenusa():
             return "Es un triángulo Escaleno"
         else:
-            return"Es un triángulo Isósceles"
+            return "Es un triángulo Isósceles"
