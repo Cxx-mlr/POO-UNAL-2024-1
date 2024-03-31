@@ -1,12 +1,9 @@
-from __future__ import annotations
-
 from textual.app import App, ComposeResult
 from textual.widgets import Input, Header, Static
-
 from textual.containers import Container
-from utils.widgets import InputWithLabel
-
 from textual.validation import Number, Length
+
+from utils.widgets import InputWithLabel
 
 import operator
 
@@ -21,8 +18,24 @@ class Ejercicio7(App[None]):
                 "primer número ingresado es [green][u]mayor[/][/], " \
                 "[red][u]menor[/][/] o [blue][u]igual[/][/] que el segundo número[/i]",
                 id="description-label")
-            yield InputWithLabel(id="first", type="number", placeholder="Ingrese el primer número...", validators=[Length(minimum=1, failure_description="Este campo es obligatorio."), Number(failure_description="Ingrese un número real válido.")])
-            yield InputWithLabel(id="second", type="number", placeholder="Ingrese el primer número...", validators=[Length(minimum=1, failure_description="Este campo es obligatorio."), Number(failure_description="Ingrese un número real válido.")])
+            yield InputWithLabel(
+                id="first",
+                type="number",
+                placeholder="Ingrese el primer número...",
+                validators=[
+                    Length(minimum=1, failure_description="Este campo es obligatorio."),
+                    Number(failure_description="El número ingresado es incorrecto.")
+                ]
+            )
+            yield InputWithLabel(
+                id="second",
+                type="number",
+                placeholder="Ingrese el primer número...",
+                validators=[
+                    Length(minimum=1, failure_description="Este campo es obligatorio."),
+                    Number(failure_description="El número ingresado es incorrecto.")
+                ]
+            )
             yield Static(id="result-label")
 
     def on_input_changed(self, event: Input.Changed):

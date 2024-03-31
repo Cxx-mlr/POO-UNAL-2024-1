@@ -1,12 +1,11 @@
 from textual.app import App, ComposeResult
 from textual.widgets import Input, Header, Static
-
 from textual.containers import Container
 from textual.validation import Number, Length
 
+from EquilateralTriangle import EquilateralTriangle
 from utils.widgets import InputWithLabel
 
-from EquilateralTriangle import EquilateralTriangle
 import operator
 
 class Ejercicio19(App[None]):

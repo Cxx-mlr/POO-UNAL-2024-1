@@ -1,12 +1,10 @@
 from textual.app import App, ComposeResult
 from textual.widgets import Input, Header, Static
-
 from textual.containers import Container
+from textual.validation import Number, Integer, Length
 
 from Student import Student
 from utils.widgets import InputWithLabel
-
-from textual.validation import Number, Integer, Length
 
 import operator
 
@@ -23,7 +21,7 @@ class Ejercicio10(App[None]):
                 id="registration-number",
                 validators=[
                     Length(minimum=1, failure_description="Este campo es obligatorio."),
-                    Integer(failure_description="El Número de Inscripción debe contener únicamente dígitos numéricos.")
+                    Integer(minimum=0, failure_description="El Número de Inscripción debe contener únicamente dígitos numéricos.")
                 ]
             )
             yield InputWithLabel(

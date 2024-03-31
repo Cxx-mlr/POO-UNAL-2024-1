@@ -1,12 +1,11 @@
 from textual.app import App, ComposeResult
 from textual.widgets import Input, Header, Static
-
 from textual.containers import Container
 from textual.validation import Number, Length
 
+from Employee import Employee
 from utils.widgets import InputWithLabel
 
-from Employee import Employee
 import operator
 
 class Ejercicio22(App[None]):
@@ -70,7 +69,7 @@ class Ejercicio22(App[None]):
         renderable = f"[magenta]Nombre:[/] [blue]{employee.name}[/]"
         
         if net_salary > 450_000:
-            renderable += f"\n\t[magenta]Salario Mensual:[/] [green]${net_salary}[/]"
+            renderable += f"\n[magenta]Salario Mensual:[/] [green]${net_salary}[/]"
 
         result_label.update(renderable)
 

@@ -1,15 +1,13 @@
 from textual.app import App, ComposeResult
 from textual.widgets import Input, Header, Static
-
 from textual.containers import Container
-from textual.validation import Number, Function, Integer, Regex, Length
-
-from utils.widgets import InputWithLabel
+from textual.validation import Number, Function, Length
 
 from QuadraticEquation import QuadraticEquation
-import math
+from utils.widgets import InputWithLabel
 
 import operator
+import math
 
 class Ejercicio23(App[None]):
     CSS_PATH = "./main.tcss"

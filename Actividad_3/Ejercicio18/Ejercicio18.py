@@ -1,15 +1,11 @@
-
-
 from textual.app import App, ComposeResult
 from textual.widgets import Input, Header, Static
-
 from textual.containers import Container
-
-from utils.widgets import InputWithLabel
-
-from textual.validation import Number, Function, Regex, Integer, Length
+from textual.validation import Number, Integer, Length
 
 from Employee import Employee
+from utils.widgets import InputWithLabel
+
 import operator
 
 class Ejercicio18(App[None]):
@@ -24,7 +20,8 @@ class Ejercicio18(App[None]):
                 type="text",
                 id="id",
                 validators=[
-                    Length(minimum=1, failure_description="Este campo es obligatorio.")
+                    Length(minimum=1, failure_description="Este campo es obligatorio."),
+                    Integer(minimum=0, failure_description="El Código del Empleado debe contener únicamente dígitos numéricos.")
                 ]
             )
             yield InputWithLabel(
@@ -53,6 +50,7 @@ class Ejercicio18(App[None]):
                 type="number",
                 id="hourly-rate",
                 validators=[
+                    Length(minimum=1, failure_description="Este campo es obligatorio."),
                     Number(failure_description="El número ingresado es incorrecto."),
                     Number(minimum=0, failure_description="El Valor por Hora Trabajada debe ser un número real no negativo.")
                 ]
@@ -65,7 +63,7 @@ class Ejercicio18(App[None]):
                 validators=[
                     Length(minimum=1, failure_description="Este campo es obligatorio."),
                     Number(failure_description="El número ingresado es incorrecto."),
-                    Number(minimum=0, maximum=100, failure_description="El Porcentaje debe ser un número real entre 0 y 100.")
+                    Number(minimum=0, maximum=100, failure_description="El Porcentaje de Retención debe ser un número real entre 0 y 100.")
                 ]
             )
             yield Static(id="result-label")
