@@ -1,15 +1,15 @@
-from __future__ import annotations
-
 from textual.app import App, ComposeResult
 from textual.widgets import Input, Header, Static
 
 from textual.containers import Container
-from textual.validation import Number, Function
+from textual.validation import Number, Function, Integer, Regex, Length
 
 from utils.widgets import InputWithLabel
 
 from QuadraticEquation import QuadraticEquation
 import math
+
+import operator
 
 class Ejercicio23(App[None]):
     CSS_PATH = "./main.tcss"
@@ -17,16 +17,16 @@ class Ejercicio23(App[None]):
         yield Header()
         with Container(id="main-panel"):
             yield Static("[i][magenta]Ingrese los coeficientes de una ecuación" \
-                         " de segundo grado, se determinarán las raíces de dicha ecuación[/][/]",
-                id="description-label")
+                         " de segundo grado, se determinarán las raíces de dicha ecuación[/][/]", id="description-label")
             yield InputWithLabel(
                 "[blue]Coeficiente a:[/]",
                 label_width=22,
                 type="number",
                 id="coefficient-a",
-                valid_empty=True,
                 validators=[
-                    Function(lambda x: not Ejercicio23.is_zero(x), failure_description="El coeficiente 'a' debe ser distinto de cero.")
+                    Length(minimum=1, failure_description="Este campo es obligatorio."),
+                    Number(failure_description="El número ingresado es incorrecto."),
+                    Function(lambda x: x.strip() != "0", failure_description="Ingrese un número distinto de 0."),
                 ]
             )
             yield InputWithLabel(
@@ -34,62 +34,49 @@ class Ejercicio23(App[None]):
                 label_width=22,
                 type="number",
                 id="coefficient-b",
-                valid_empty=True,
+                validators=[
+                    Length(minimum=1, failure_description="Este campo es obligatorio."),
+                    Number(failure_description="El número ingresado es incorrecto.")
+                ]
             )
             yield InputWithLabel(
                 "[blue]Coeficiente c:[/]",
                 label_width=22,
                 type="number",
                 id="coefficient-c",
-                valid_empty=True,
+                validators=[
+                    Length(minimum=1, failure_description="Este campo es obligatorio."),
+                    Number(failure_description="El número ingresado es incorrecto.")
+                ]
             )
             yield Static(id="result-label")
 
     def on_input_changed(self, event: Input.Changed):
-        if not getattr(event.validation_result, "is_valid", True):
+        result_label = self.query_one("#result-label", Static)
+        if not all(map(operator.attrgetter("is_valid"), self.query(InputWithLabel))):
+            result_label.update("")
             return
         
-        a_input = self.query_one("#coefficient-a", Input)
-        b_input = self.query_one("#coefficient-b", Input)
-        c_input = self.query_one("#coefficient-c", Input)
+        a = float(self.query_one("#coefficient-a", Input).value)
+        b = float(self.query_one("#coefficient-b", Input).value)
+        c = float(self.query_one("#coefficient-c", Input).value)
 
-        try:
-            a = float(a_input.value)
-            b = float(b_input.value)
-            c = float(c_input.value)
-        except ValueError:
-            self.query_one("#result-label", Static).update("")
+        quadratic_equation = QuadraticEquation(a=a, b=b, c=c)
+        discriminant = quadratic_equation.calculate_discriminant()
+
+        if discriminant < 0:
+            renderable = "[red]La ecuación no tiene solución en los números reales.[/]"
         else:
-            if all((a_input.value, b_input.value, c_input.value)):
-                quadratic_equation = QuadraticEquation(a=a, b=b, c=c)
-                discriminant = quadratic_equation.calculate_discriminant()
-
-                renderable = ""
-
-                if discriminant < 0:
-                    renderable += "[red]La ecuación no tiene solución en los números reales.[/]"
-                else:
-                    x_1 = (-quadratic_equation.b + math.sqrt(discriminant))/(2 * quadratic_equation.a)
-                    if discriminant == 0:
-                        renderable += "[green]La solución a la ecuación de segundo grado es:[/]" \
-                            f"[magenta]\n\tx_1 = {x_1}[/]"
-                    else:
-                        x_2 = (-quadratic_equation.b - math.sqrt(discriminant))/(2 * quadratic_equation.a)
-                        renderable += "[green]Las soluciones a la ecuación de segundo grado son:[/]" \
-                            f"[magenta]\n\tx_1 = {x_1}" \
-                            f"\n\tx_2 = {x_2}[/]"
-                self.query_one("#result-label", Static).update(renderable)
+            x_1 = (-quadratic_equation.b + math.sqrt(discriminant))/(2 * quadratic_equation.a)
+            if discriminant == 0:
+                renderable = "[green]La solución a la ecuación de segundo grado es:[/]" \
+                    f"[magenta]\n\tx_1 = {x_1}[/]"
             else:
-                self.query_one("#result-label", Static).update("")
-
-    @staticmethod
-    def is_zero(value: str) -> bool:
-        try:
-            value_f = float(value)
-        except ValueError:
-            return False
-        else:
-            return value_f == 0
+                x_2 = (-quadratic_equation.b - math.sqrt(discriminant))/(2 * quadratic_equation.a)
+                renderable = "[green]Las soluciones a la ecuación de segundo grado son:[/]" \
+                    f"[magenta]\n\tx_1 = {x_1}" \
+                    f"\n\tx_2 = {x_2}[/]"
+        result_label.update(renderable)
 
     @staticmethod
     def main():

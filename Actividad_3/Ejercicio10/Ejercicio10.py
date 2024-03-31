@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from textual.app import App, ComposeResult
 from textual.widgets import Input, Header, Static
 
@@ -8,7 +6,9 @@ from textual.containers import Container
 from Student import Student
 from utils.widgets import InputWithLabel
 
-from textual.validation import Number, Function
+from textual.validation import Number, Integer, Length
+
+import operator
 
 class Ejercicio10(App[None]):
     CSS_PATH = "./main.tcss"
@@ -22,24 +22,27 @@ class Ejercicio10(App[None]):
                 type="text",
                 id="registration-number",
                 validators=[
-                   Function(Ejercicio10.is_valid_integer, "El Número de Inscripción debe contener únicamente dígitos numéricos.")
-                ],
-                valid_empty=True
+                    Length(minimum=1, failure_description="Este campo es obligatorio."),
+                    Integer(failure_description="El Número de Inscripción debe contener únicamente dígitos numéricos.")
+                ]
             )
             yield InputWithLabel(
                 "[blue]Nombre:",
                 label_width=22,
                 type="text",
                 id="name",
-                valid_empty=True
+                validators=[
+                    Length(minimum=1, failure_description="Este campo es obligatorio.")
+                ]
             )
             yield InputWithLabel(
                 "[blue]Patrimonio:",
                 label_width=22,
                 type="number",
                 id="assets",
-                valid_empty=True,
                 validators=[
+                    Length(minimum=1, failure_description="Este campo es obligatorio."),
+                    Number(failure_description="El número ingresado es incorrecto."),
                     Number(minimum=0, failure_description="El patrimonio debe ser un número real no negativo.")
                 ]
             )
@@ -49,51 +52,34 @@ class Ejercicio10(App[None]):
                 type="integer",
                 id="social-stratum",
                 validators=[
-                    Number(minimum=1, maximum=6, failure_description="El Estrato Social debe ser un número entero entre 1 y 6.")
-                ],
-                valid_empty=True
+                    Length(minimum=1, failure_description="Este campo es obligatorio."),
+                    Integer(failure_description="El número ingresado es incorrecto."),
+                    Integer(minimum=1, maximum=6, failure_description="El Estrato Social debe ser un número entero entre 1 y 6.")
+                ]
             )
             yield Static(id="result-label")
 
     def on_input_changed(self, event: Input.Changed):
-        if not getattr(event.validation_result, "is_valid", True):
+        result_label = self.query_one("#result-label", Static)
+        if not all(map(operator.attrgetter("is_valid"), self.query(InputWithLabel))):
+            result_label.update("")
             return
 
-        registration_number_input = self.query_one("#registration-number", Input)
-        name_input = self.query_one("#name", Input)
-        assets_input = self.query_one("#assets", Input)
-        social_stratum_input = self.query_one("#social-stratum", Input) 
+        registration_number = self.query_one("#registration-number", Input).value
+        name = self.query_one("#name", Input).value
+        assets = float(self.query_one("#assets", Input).value)
+        social_stratum = float(self.query_one("#social-stratum", Input).value)
 
-        try:
-            registration_number = registration_number_input.value
-            name = name_input.value
-            assets = float(assets_input.value)
-            social_stratum = int(social_stratum_input.value)
-        except:
-            self.query_one("#result-label", Static).update("")
-        else:
-            if all((registration_number_input.value, name_input.value, assets_input.value, social_stratum_input.value)):
-                student: Student = Student(
-                    registration_number=registration_number,
-                    name=name,
-                    assets=assets,
-                    social_stratum=social_stratum
-                )
-                self.query_one("#result-label", Static).update(
-                    f"El Estudiante con número de inscripción [yellow]{student.registration_number}[/] " \
-                    f"y nombre [yellow]{student.name}[/] debe pagar [green]${student.calculate_tuition_feed():,}[/]"
-                )
-            else:
-                self.query_one("#result-label", Static).update("")
-
-    @staticmethod
-    def is_valid_integer(value: str) -> bool:
-        try:
-            _ = int(value)
-        except ValueError:
-            return False
-        else:
-            return _ >= 0
+        student: Student = Student(
+            registration_number=registration_number,
+            name=name,
+            assets=assets,
+            social_stratum=social_stratum
+        )
+        result_label.update(
+            f"El Estudiante con número de inscripción [yellow]{student.registration_number}[/] " \
+            f"y nombre [yellow]{student.name}[/] debe pagar [green]${student.calculate_tuition_feed():,}[/]"
+        )
 
     @staticmethod
     def main():

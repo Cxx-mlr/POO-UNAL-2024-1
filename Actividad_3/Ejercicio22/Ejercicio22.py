@@ -1,84 +1,78 @@
-from __future__ import annotations
-
 from textual.app import App, ComposeResult
 from textual.widgets import Input, Header, Static
 
 from textual.containers import Container
-from textual.validation import Number
+from textual.validation import Number, Length
 
 from utils.widgets import InputWithLabel
 
 from Employee import Employee
+import operator
 
 class Ejercicio22(App[None]):
     CSS_PATH = "./main.tcss"
     def compose(self) -> ComposeResult:
         yield Header()
         with Container(id="main-panel"):
-            yield Static("[i][magenta]Ingrese los datos del empleado, se determinará el salario mensual[/][/]",
-                id="description-label")
+            yield Static("[i][magenta]Ingrese los datos del empleado, se determinará el salario mensual[/][/]", id="description-label")
             yield InputWithLabel(
                 "[blue]Nombre:[/]",
                 label_width=22,
                 type="text",
                 id="name",
-                valid_empty=True
+                validators=[
+                    Length(minimum=1, failure_description="Este campo es obligatorio")
+                ]
             )
             yield InputWithLabel(
                 "[blue]Salario Básico por Hora:[/]",
                 label_width=22,
                 type="number",
                 id="hourly-rate",
-                valid_empty=True,
                 validators=[
+                    Length(minimum=1, failure_description="Este campo es obligatorio."),
+                    Number(failure_description="El número ingresado es incorrecto."),
                     Number(minimum=0, failure_description="El Salario Básico por Hora debe ser un número real no negativo.")
                 ]
             )
             yield InputWithLabel(
                 "[blue]Número de Horas Trabajadas en el Mes:[/]",
                 label_width=22,
-                type="integer",
+                type="number",
                 id="hours-worked-per-month",
-                valid_empty=True,
                 validators=[
-                    Number(minimum=0, failure_description="Las Horas Trabajadas en el Mes debe ser un número entero no negativo.")
+                    Length(minimum=1, failure_description="Este campo es obligatorio."),
+                    Number(failure_description="El número ingresado es incorrecto."),
+                    Number(minimum=0, failure_description="Las Horas Trabajadas en el Mes deben ser un número real no negativo.")
                 ]
             )
             yield Static(id="result-label")
 
     def on_input_changed(self, event: Input.Changed):
-        if not getattr(event.validation_result, "is_valid", True):
+        result_label = self.query_one("#result-label", Static)
+        if not all(map(operator.attrgetter("is_valid"), self.query(InputWithLabel))):
+            result_label.update("")
             return
         
-        name_input = self.query_one("#name", Input)
-        hourly_rate_input = self.query_one("#hourly-rate", Input)
-        hours_worked_per_month_input = self.query_one("#hours-worked-per-month", Input)
+        name = self.query_one("#name", Input).value
+        hourly_rate = float(self.query_one("#hourly-rate", Input).value)
+        hours_worked_per_month = float(self.query_one("#hours-worked-per-month", Input).value)
 
-        try:
-            name = name_input.value
-            hourly_rate = float(hourly_rate_input.value)
-            hours_worked_per_month = int(hours_worked_per_month_input.value)
-        except ValueError as e:
-            self.query_one("#result-label", Static).update("")
-        else:
-            if all((name_input.value, hourly_rate_input.value, hours_worked_per_month_input.value)):
-                employee: Employee = Employee(
-                    name=name,
-                    hourly_rate=hourly_rate,
-                    hours_worked_per_month=hours_worked_per_month
-                )
+        employee: Employee = Employee(
+            name=name,
+            hourly_rate=hourly_rate,
+            hours_worked_per_month=hours_worked_per_month
+        )
 
-                net_salary = employee.calculate_net_salary()
+        net_salary = employee.calculate_net_salary()
 
-                renderable = f"[yellow]Se muestra la información del empleado:[/]" \
-                    f"\n\t[magenta]Nombre:[/] [blue]{employee.name}[/]"
-                
-                if net_salary > 450_000:
-                    renderable += f"\n\t[magenta]Salario Mensual:[/] [green]${net_salary}[/]"
+        #renderable = f"[yellow]Se muestra la información del empleado:[/]" \
+        renderable = f"[magenta]Nombre:[/] [blue]{employee.name}[/]"
+        
+        if net_salary > 450_000:
+            renderable += f"\n\t[magenta]Salario Mensual:[/] [green]${net_salary}[/]"
 
-                self.query_one("#result-label", Static).update(renderable)
-            else:
-                self.query_one("#result-label", Static).update("")
+        result_label.update(renderable)
 
     @staticmethod
     def main():

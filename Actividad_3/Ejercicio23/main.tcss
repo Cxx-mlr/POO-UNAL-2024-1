@@ -10,7 +10,7 @@ Screen {
     width: 80%;
     height: 100%;
     border: solid $accent;
-    min-height: 22;
+    min-height: 25;
 }
 
 #description-label {
