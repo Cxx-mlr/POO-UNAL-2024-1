@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from textual.app import ComposeResult
 from textual.widgets import Input, Label, Static
 from textual.widget import Widget
@@ -36,7 +38,7 @@ class InputWithLabel(Widget):
     """
 
     class Changed(Message):
-        def __init__(self, input: Input, is_valid: bool):
+        def __init__(self, input: Input, is_valid: bool) -> "InputWithLabel.Changed":
             self.input = input
             self.is_valid = is_valid
             super().__init__()
