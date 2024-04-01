@@ -36,7 +36,7 @@ class Ejercicio7(App[None]):
             yield InputWithLabel(
                 id="second",
                 type="number",
-                placeholder="Ingrese el primer número...",
+                placeholder="Ingrese el segundo número...",
                 validators=[
                     Length(
                         minimum=1,
