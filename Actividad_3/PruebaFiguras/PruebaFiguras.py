@@ -16,7 +16,10 @@ class PruebaFiguras(App[None]):
     def compose(self) -> ComposeResult:
         yield Header()
         with Container(id="main-panel"):
-            yield Static("[i][magenta]Ingresa los datos para crear las figuras geométricas[/][/]", id="description-label")
+            yield Static(
+                "[i][magenta]Ingresa los datos para crear las figuras geométricas[/][/]",
+                id="description-label"
+            )
 
             yield Static("[blue on black]Círculo")
             yield InputWithLabel(
@@ -25,9 +28,17 @@ class PruebaFiguras(App[None]):
                 type="number",
                 id="circle-radius",
                 validators=[
-                    Length(minimum=1, failure_description="Este campo es obligatorio."),
-                    Number(failure_description="El número ingresado es incorrecto."),
-                    Number(minimum=0, failure_description="Ingrese un número real no negativo.")
+                    Length(
+                        minimum=1,
+                        failure_description="Este campo es obligatorio."
+                    ),
+                    Number(
+                        failure_description="El número ingresado es incorrecto."
+                    ),
+                    Number(
+                        minimum=0,
+                        failure_description="Ingrese un número real no negativo."
+                    )
                 ]
             )
 
@@ -38,9 +49,17 @@ class PruebaFiguras(App[None]):
                 type="number",
                 id="rectangle-base",
                 validators=[
-                    Length(minimum=1, failure_description="Este campo es obligatorio."),
-                    Number(failure_description="El número ingresado es incorrecto."),
-                    Number(minimum=0, failure_description="Ingrese un número real no negativo.")
+                    Length(
+                        minimum=1,
+                        failure_description="Este campo es obligatorio."
+                    ),
+                    Number(
+                        failure_description="El número ingresado es incorrecto."
+                    ),
+                    Number(
+                        minimum=0,
+                        failure_description="Ingrese un número real no negativo."
+                    )
                 ]
             )
             yield InputWithLabel(
@@ -49,9 +68,17 @@ class PruebaFiguras(App[None]):
                 type="number",
                 id="rectangle-height",
                 validators=[
-                    Length(minimum=1, failure_description="Este campo es obligatorio."),
-                    Number(failure_description="El número ingresado es incorrecto."),
-                    Number(minimum=0, failure_description="Ingrese un número real no negativo.")
+                    Length(
+                        minimum=1,
+                        failure_description="Este campo es obligatorio."
+                    ),
+                    Number(
+                        failure_description="El número ingresado es incorrecto."
+                    ),
+                    Number(
+                        minimum=0,
+                        failure_description="Ingrese un número real no negativo."
+                    )
                 ]
             )
 
@@ -62,9 +89,17 @@ class PruebaFiguras(App[None]):
                 type="number",
                 id="square-side",
                 validators=[
-                    Length(minimum=1, failure_description="Este campo es obligatorio."),
-                    Number(failure_description="El número ingresado es incorrecto."),
-                    Number(minimum=0, failure_description="Ingrese un número real no negativo.")
+                    Length(
+                        minimum=1,
+                        failure_description="Este campo es obligatorio."
+                    ),
+                    Number(
+                        failure_description="El número ingresado es incorrecto."
+                    ),
+                    Number(
+                        minimum=0,
+                        failure_description="Ingrese un número real no negativo."
+                    )
                 ]
             )
 
@@ -75,9 +110,17 @@ class PruebaFiguras(App[None]):
                 type="number",
                 id="triangle-base",
                 validators=[
-                    Length(minimum=1, failure_description="Este campo es obligatorio."),
-                    Number(failure_description="El número ingresado es incorrecto."),
-                    Number(minimum=0, failure_description="Ingrese un número real no negativo.")
+                    Length(
+                        minimum=1,
+                        failure_description="Este campo es obligatorio."
+                    ),
+                    Number(
+                        failure_description="El número ingresado es incorrecto."
+                    ),
+                    Number(
+                        minimum=0,
+                        failure_description="Ingrese un número real no negativo."
+                    )
                 ]
             )
             yield InputWithLabel(
@@ -86,9 +129,17 @@ class PruebaFiguras(App[None]):
                 type="number",
                 id="triangle-height",
                 validators=[
-                    Length(minimum=1, failure_description="Este campo es obligatorio."),
-                    Number(failure_description="El número ingresado es incorrecto."),
-                    Number(minimum=0, failure_description="Ingrese un número real no negativo.")
+                    Length(
+                        minimum=1,
+                        failure_description="Este campo es obligatorio."
+                    ),
+                    Number(
+                        failure_description="El número ingresado es incorrecto."
+                    ),
+                    Number(
+                        minimum=0,
+                        failure_description="Ingrese un número real no negativo."
+                    )
                 ]
             )
             yield Static(id="result-label")

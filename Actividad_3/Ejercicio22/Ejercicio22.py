@@ -13,14 +13,21 @@ class Ejercicio22(App[None]):
     def compose(self) -> ComposeResult:
         yield Header()
         with Container(id="main-panel"):
-            yield Static("[i][magenta]Ingrese los datos del empleado, se determinará el salario mensual[/][/]", id="description-label")
+            yield Static(
+                "[i][magenta]Ingrese los datos del empleado, " \
+                "se determinará el salario mensual[/][/]",
+                id="description-label"
+            )
             yield InputWithLabel(
                 "[blue]Nombre:[/]",
                 label_width=22,
                 type="text",
                 id="name",
                 validators=[
-                    Length(minimum=1, failure_description="Este campo es obligatorio")
+                    Length(
+                        minimum=1,
+                        failure_description="Este campo es obligatorio"
+                    )
                 ]
             )
             yield InputWithLabel(
@@ -29,9 +36,18 @@ class Ejercicio22(App[None]):
                 type="number",
                 id="hourly-rate",
                 validators=[
-                    Length(minimum=1, failure_description="Este campo es obligatorio."),
-                    Number(failure_description="El número ingresado es incorrecto."),
-                    Number(minimum=0, failure_description="El Salario Básico por Hora debe ser un número real no negativo.")
+                    Length(
+                        minimum=1,
+                        failure_description="Este campo es obligatorio."
+                    ),
+                    Number(
+                        failure_description="El número ingresado es incorrecto."
+                    ),
+                    Number(
+                        minimum=0,
+                        failure_description="El Salario Básico por Hora " \
+                                            "debe ser un número real no negativo."
+                    )
                 ]
             )
             yield InputWithLabel(
@@ -40,9 +56,18 @@ class Ejercicio22(App[None]):
                 type="number",
                 id="hours-worked-per-month",
                 validators=[
-                    Length(minimum=1, failure_description="Este campo es obligatorio."),
-                    Number(failure_description="El número ingresado es incorrecto."),
-                    Number(minimum=0, failure_description="Las Horas Trabajadas en el Mes deben ser un número real no negativo.")
+                    Length(
+                        minimum=1,
+                        failure_description="Este campo es obligatorio."
+                    ),
+                    Number(
+                        failure_description="El número ingresado es incorrecto."
+                    ),
+                    Number(
+                        minimum=0,
+                        failure_description="Las Horas Trabajadas en el Mes " \
+                                            "deben ser un número real no negativo."
+                    )
                 ]
             )
             yield Static(id="result-label")

@@ -17,14 +17,20 @@ class Ejercicio7(App[None]):
                 "[i]Ingrese dos números, se determinará si el " \
                 "primer número ingresado es [green][u]mayor[/][/], " \
                 "[red][u]menor[/][/] o [blue][u]igual[/][/] que el segundo número[/i]",
-                id="description-label")
+                id="description-label"
+            )
             yield InputWithLabel(
                 id="first",
                 type="number",
                 placeholder="Ingrese el primer número...",
                 validators=[
-                    Length(minimum=1, failure_description="Este campo es obligatorio."),
-                    Number(failure_description="El número ingresado es incorrecto.")
+                    Length(
+                        minimum=1,
+                        failure_description="Este campo es obligatorio."
+                    ),
+                    Number(
+                        failure_description="El número ingresado es incorrecto."
+                    )
                 ]
             )
             yield InputWithLabel(
@@ -32,8 +38,13 @@ class Ejercicio7(App[None]):
                 type="number",
                 placeholder="Ingrese el primer número...",
                 validators=[
-                    Length(minimum=1, failure_description="Este campo es obligatorio."),
-                    Number(failure_description="El número ingresado es incorrecto.")
+                    Length(
+                        minimum=1,
+                        failure_description="Este campo es obligatorio."
+                    ),
+                    Number(
+                        failure_description="El número ingresado es incorrecto."
+                    )
                 ]
             )
             yield Static(id="result-label")

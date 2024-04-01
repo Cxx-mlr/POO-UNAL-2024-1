@@ -14,17 +14,28 @@ class Ejercicio23(App[None]):
     def compose(self) -> ComposeResult:
         yield Header()
         with Container(id="main-panel"):
-            yield Static("[i][magenta]Ingrese los coeficientes de una ecuación" \
-                         " de segundo grado, se determinarán las raíces de dicha ecuación[/][/]", id="description-label")
+            yield Static(
+                "[i][magenta]Ingrese los coeficientes de una ecuación" \
+                " de segundo grado, se determinarán las raíces de dicha ecuación[/][/]",
+                id="description-label"
+            )
             yield InputWithLabel(
                 "[blue]Coeficiente a:[/]",
                 label_width=22,
                 type="number",
                 id="coefficient-a",
                 validators=[
-                    Length(minimum=1, failure_description="Este campo es obligatorio."),
-                    Number(failure_description="El número ingresado es incorrecto."),
-                    Function(lambda x: x.strip() != "0", failure_description="Ingrese un número distinto de 0."),
+                    Length(
+                        minimum=1,
+                        failure_description="Este campo es obligatorio."
+                    ),
+                    Number(
+                        failure_description="El número ingresado es incorrecto."
+                    ),
+                    Function(
+                        lambda x: x.strip() != "0",
+                        failure_description="Ingrese un número distinto de 0."
+                    ),
                 ]
             )
             yield InputWithLabel(
@@ -33,8 +44,13 @@ class Ejercicio23(App[None]):
                 type="number",
                 id="coefficient-b",
                 validators=[
-                    Length(minimum=1, failure_description="Este campo es obligatorio."),
-                    Number(failure_description="El número ingresado es incorrecto.")
+                    Length(
+                        minimum=1,
+                        failure_description="Este campo es obligatorio."
+                    ),
+                    Number(
+                        failure_description="El número ingresado es incorrecto."
+                    )
                 ]
             )
             yield InputWithLabel(
@@ -43,8 +59,13 @@ class Ejercicio23(App[None]):
                 type="number",
                 id="coefficient-c",
                 validators=[
-                    Length(minimum=1, failure_description="Este campo es obligatorio."),
-                    Number(failure_description="El número ingresado es incorrecto.")
+                    Length(
+                        minimum=1,
+                        failure_description="Este campo es obligatorio."    
+                    ),
+                    Number(
+                        failure_description="El número ingresado es incorrecto."
+                    )
                 ]
             )
             yield Static(id="result-label")
@@ -74,6 +95,7 @@ class Ejercicio23(App[None]):
                 renderable = "[green]Las soluciones a la ecuación de segundo grado son:[/]" \
                     f"[magenta]\n\tx_1 = {x_1}" \
                     f"\n\tx_2 = {x_2}[/]"
+                
         result_label.update(renderable)
 
     @staticmethod

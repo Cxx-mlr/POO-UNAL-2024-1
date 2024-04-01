@@ -10,18 +10,30 @@ import operator
 
 class Ejercicio18(App[None]):
     CSS_PATH = "./main.tcss"
+
     def compose(self) -> ComposeResult:
         yield Header()
         with Container(id="main-panel"):
-            yield Static("[i][magenta]Ingrese los datos del empleado, se determinará el salario bruto y el salario neto[/][/]", id="description-label")
+            yield Static(
+                "[i][magenta]Ingrese los datos del empleado, " \
+                "se determinará el salario bruto y el salario neto[/][/]",
+                id="description-label"
+            )
             yield InputWithLabel(
                 "[blue]Código del Empleado:[/]",
                 label_width=22,
                 type="text",
                 id="id",
                 validators=[
-                    Length(minimum=1, failure_description="Este campo es obligatorio."),
-                    Integer(minimum=0, failure_description="El Código del Empleado debe contener únicamente dígitos numéricos.")
+                    Length(
+                        minimum=1,
+                        failure_description="Este campo es obligatorio."
+                    ),
+                    Integer(
+                        minimum=0,
+                        failure_description="El Código del Empleado debe " \
+                                            "contener únicamente dígitos numéricos."
+                    )
                 ]
             )
             yield InputWithLabel(
@@ -30,7 +42,10 @@ class Ejercicio18(App[None]):
                 type="text",
                 id="name",
                 validators=[
-                    Length(minimum=1, failure_description="Este campo es obligatorio.")
+                    Length(
+                        minimum=1,
+                        failure_description="Este campo es obligatorio."
+                    )
                 ]
             )
             yield InputWithLabel(
@@ -39,9 +54,18 @@ class Ejercicio18(App[None]):
                 type="number",
                 id="hours-worked-per-month",
                 validators=[
-                    Length(minimum=1, failure_description="Este campo es obligatorio."),
-                    Number(failure_description="El número ingresado es incorrecto."),
-                    Number(minimum=0, failure_description="Las Horas Trabajadas al Mes deben ser un número real no negativo.")
+                    Length(
+                        minimum=1,
+                        failure_description="Este campo es obligatorio."
+                    ),
+                    Number(
+                        failure_description="El número ingresado es incorrecto."
+                    ),
+                    Number(
+                        minimum=0,
+                        failure_description="Las Horas Trabajadas al Mes " \
+                                            "deben ser un número real no negativo."
+                    )
                 ]
             )
             yield InputWithLabel(
@@ -50,9 +74,18 @@ class Ejercicio18(App[None]):
                 type="number",
                 id="hourly-rate",
                 validators=[
-                    Length(minimum=1, failure_description="Este campo es obligatorio."),
-                    Number(failure_description="El número ingresado es incorrecto."),
-                    Number(minimum=0, failure_description="El Valor por Hora Trabajada debe ser un número real no negativo.")
+                    Length(
+                        minimum=1,
+                        failure_description="Este campo es obligatorio."
+                    ),
+                    Number(
+                        failure_description="El número ingresado es incorrecto."
+                    ),
+                    Number(
+                        minimum=0,
+                        failure_description="El Valor por Hora Trabajada " \
+                                            "debe ser un número real no negativo."
+                    )
                 ]
             )
             yield InputWithLabel(
@@ -61,9 +94,19 @@ class Ejercicio18(App[None]):
                 type="number",
                 id="withholding-tax-percentage",
                 validators=[
-                    Length(minimum=1, failure_description="Este campo es obligatorio."),
-                    Number(failure_description="El número ingresado es incorrecto."),
-                    Number(minimum=0, maximum=100, failure_description="El Porcentaje de Retención debe ser un número real entre 0 y 100.")
+                    Length(
+                        minimum=1,
+                        failure_description="Este campo es obligatorio."
+                    ),
+                    Number(
+                        failure_description="El número ingresado es incorrecto."
+                    ),
+                    Number(
+                        minimum=0,
+                        maximum=100,
+                        failure_description="El Porcentaje de Retención " \
+                                            "debe ser un número real entre 0 y 100."
+                    )
                 ]
             )
             yield Static(id="result-label")
@@ -87,6 +130,7 @@ class Ejercicio18(App[None]):
             hourly_rate=hourly_rate,
             withholding_tax_percentage=withholding_tax_percentage
         )
+
         #renderable = f"[yellow]Se muestran los datos del empleado:[/]" \
         renderable = f"[magenta]Código[/]       : [blue]{employee.id}[/]" \
             f"\n[magenta]Nombre[/]       : [blue]{employee.name}[/]" \

@@ -13,17 +13,28 @@ class Ejercicio19(App[None]):
     def compose(self) -> ComposeResult:
         yield Header()
         with Container(id="main-panel"):
-            yield Static("[i][magenta]Ingrese el lado de un triángulo equilátero, se determinará el perímetro, la altura y el área[/][/]",
-                id="description-label")
+            yield Static(
+                "[i][magenta]Ingrese el lado de un triángulo equilátero, " \
+                "se determinará el perímetro, la altura y el área[/][/]",
+                id="description-label"
+            )
             yield InputWithLabel(
                 "[blue]Lado del Triángulo Equilátero:[/]",
                 label_width=22,
                 type="number",
                 id="side-length",
                 validators=[
-                    Length(minimum=1, failure_description="Este campo es obligatorio."),
-                    Number(failure_description="El número ingresado es incorrecto."),
-                    Number(minimum=0, failure_description="El lado del triángulo debe ser un número real no negativo.")
+                    Length(
+                        minimum=1,
+                        failure_description="Este campo es obligatorio."
+                    ),
+                    Number(
+                        failure_description="El número ingresado es incorrecto."
+                    ),
+                    Number(
+                        minimum=0,
+                        failure_description="El lado del triángulo debe ser un número real no negativo."
+                    )
                 ]
             )
             yield Static(id="result-label")

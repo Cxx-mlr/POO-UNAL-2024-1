@@ -10,18 +10,29 @@ import operator
 
 class Ejercicio10(App[None]):
     CSS_PATH = "./main.tcss"
+
     def compose(self) -> ComposeResult:
         yield Header()
         with Container(id="main-panel"):
-            yield Static("[i][magenta]Ingrese los datos del estudiante, se determinará el costo de matrícula[/][/]", id="description-label")
+            yield Static(
+                "[i][magenta]Ingrese los datos del estudiante, " \
+                "se determinará el costo de matrícula[/][/]",
+                id="description-label"
+            )
             yield InputWithLabel(
                 "[blue]Número de Inscripción:[/]",
                 label_width=22,
                 type="text",
                 id="registration-number",
                 validators=[
-                    Length(minimum=1, failure_description="Este campo es obligatorio."),
-                    Integer(minimum=0, failure_description="El Número de Inscripción debe contener únicamente dígitos numéricos.")
+                    Length(
+                        minimum=1,
+                        failure_description="Este campo es obligatorio."
+                    ),
+                    Integer(
+                        minimum=0,
+                        failure_description="El Número de Inscripción debe contener únicamente " \
+                                            "dígitos numéricos.")
                 ]
             )
             yield InputWithLabel(
@@ -30,7 +41,10 @@ class Ejercicio10(App[None]):
                 type="text",
                 id="name",
                 validators=[
-                    Length(minimum=1, failure_description="Este campo es obligatorio.")
+                    Length(
+                        minimum=1,
+                        failure_description="Este campo es obligatorio."
+                    )
                 ]
             )
             yield InputWithLabel(
@@ -39,9 +53,17 @@ class Ejercicio10(App[None]):
                 type="number",
                 id="assets",
                 validators=[
-                    Length(minimum=1, failure_description="Este campo es obligatorio."),
-                    Number(failure_description="El número ingresado es incorrecto."),
-                    Number(minimum=0, failure_description="El patrimonio debe ser un número real no negativo.")
+                    Length(
+                        minimum=1,
+                        failure_description="Este campo es obligatorio."
+                    ),
+                    Number(
+                        failure_description="El número ingresado es incorrecto."
+                    ),
+                    Number(
+                        minimum=0,
+                        failure_description="El patrimonio debe ser un número real no negativo."
+                    )
                 ]
             )
             yield InputWithLabel(
@@ -50,9 +72,18 @@ class Ejercicio10(App[None]):
                 type="integer",
                 id="social-stratum",
                 validators=[
-                    Length(minimum=1, failure_description="Este campo es obligatorio."),
-                    Integer(failure_description="El número ingresado es incorrecto."),
-                    Integer(minimum=1, maximum=6, failure_description="El Estrato Social debe ser un número entero entre 1 y 6.")
+                    Length(
+                        minimum=1,
+                        failure_description="Este campo es obligatorio."
+                    ),
+                    Integer(
+                        failure_description="El número ingresado es incorrecto."
+                    ),
+                    Integer(
+                        minimum=1,
+                        maximum=6,
+                        failure_description="El Estrato Social debe ser un número entero entre 1 y 6."
+                    )
                 ]
             )
             yield Static(id="result-label")
@@ -74,9 +105,11 @@ class Ejercicio10(App[None]):
             assets=assets,
             social_stratum=social_stratum
         )
+        
         result_label.update(
-            f"El Estudiante con número de inscripción [yellow]{student.registration_number}[/] " \
-            f"y nombre [yellow]{student.name}[/] debe pagar [green]${student.calculate_tuition_feed():,}[/]"
+            "El Estudiante con número de inscripción " \
+            f"[yellow]{student.registration_number}[/] y nombre [yellow]{student.name}[/] " \
+            f"debe pagar [green]${student.calculate_tuition_feed():,}[/]"
         )
 
     @staticmethod
