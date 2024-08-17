@@ -1,0 +1,55 @@
+Screen {
+    align: center middle;
+}
+
+#main-panel {
+    padding: 1;
+    layout: grid;
+    grid-size: 1;
+    grid-rows: auto auto auto auto auto 1fr;
+    grid-gutter: 1;
+    width: 50%;
+    height: 95%;
+    min-height: 36;
+    max-height: 40;
+    min-width: 65;
+    max-width: 70;
+    background: #efeeef;
+}
+
+.label {
+  width: 22;
+  color: black;
+  padding-top: 1;
+  text-align: right;
+}
+
+.input {
+  height: 3;
+  width: 1fr;
+  background: white;
+}
+
+#add-container {
+  layout: grid;
+  grid-size: 2 1;
+  grid-columns: auto auto;
+  grid-gutter: 1;
+  padding-left: 23;
+}
+
+#clear-button {
+  dock: right;
+}
+
+ListItem.--highlight {
+  background: black 50%;
+}
+
+ListItem > Widget :hover {
+  background: $accent 10%;
+}
+
+ListItem.--highlight > Widget :hover {
+  background: $accent 5%;
+}
