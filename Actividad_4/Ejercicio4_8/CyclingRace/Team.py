@@ -11,7 +11,7 @@ class Team:
         self.__name = name
         self.__country = country
         self.__total_time = 0
-        self.__cyclists: Cyclist = []
+        self.__cyclists: list[Cyclist] = []
 
     def get_name(self) -> str:
         return self.__name
