@@ -11,7 +11,10 @@ class Ejercicio4_1:
 		deposit_amount = float(input("Ingrese la cantidad a consignar: $"))
 		withdraw_amount = float(input("Ingrese la cantidad a retirar: $"))
 
-		savings_account: SavingsAccount = SavingsAccount(balance=balance, annual_interest_rate=annual_interest_rate)
+		savings_account: SavingsAccount = SavingsAccount(
+			balance=balance,
+			annual_interest_rate=annual_interest_rate
+		)
 
 		savings_account.deposit(deposit_amount)
 		savings_account.withdraw(withdraw_amount)
