@@ -4,6 +4,10 @@ Este repositorio contiene una serie de actividades académicas realizadas en el 
 
 ## Instrucciones para Ejecutar (python>=3.10)
 
+> Antes de ejecutar los ejercicios, es necesario contar con la biblioteca [Textual](https://github.com/Textualize/textual) instalada. Puede instalarla ejecutando el siguiente comando en su terminal:
+>
+`python -m pip install -U textual`
+
 Para ejecutar los ejercicios, siga estos pasos:
 
 1. **Clonar el Repositorio**: Utilice el siguiente comando en su terminal para clonar el repositorio:
