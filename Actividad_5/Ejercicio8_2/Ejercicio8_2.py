@@ -1,6 +1,7 @@
+from Grades.MainWindow import MainWindow
 
-
-class Ejercicio8_2:
+class Ejercicio8_2(MainWindow):
 	@staticmethod
 	def main():
-		pass
+		app: MainWindow = MainWindow()
+		app.run()

@@ -1,6 +1,7 @@
-
+from Figures.MainWindow import MainWindow
 
 class Ejercicio8_3:
 	@staticmethod
 	def main():
-		pass
+		app: MainWindow = MainWindow()
+		app.run()
