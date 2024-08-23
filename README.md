@@ -4,6 +4,11 @@ Este repositorio contiene una serie de actividades académicas realizadas en el 
 
 ## Instrucciones para Ejecutar (python>=3.10)
 
+> Antes de ejecutar los ejercicios, es necesario contar con las bibliotecas [Textual](https://github.com/Textualize/textual) y [Faker](https://faker.readthedocs.io/en/master/) instaladas. Puede instalarlas ejecutando los siguientes comandos en su terminal:
+>
+`python -m pip install -U textual`<br />
+`python -m pip install -U Faker`
+
 Para ejecutar los ejercicios, siga estos pasos:
 
 1. **Clonar el Repositorio**: Utilice el siguiente comando en su terminal para clonar el repositorio:
@@ -11,7 +16,6 @@ Para ejecutar los ejercicios, siga estos pasos:
 
 2. **Navegar al Directorio de la Actividad**: Una vez clonado, acceda al directorio de la actividad. Ejecute:
 <br/>`cd "./POO-UNAL-2024-1/Actividad_4"`
-
 
 3. **Ejecutar el ejercicio correspondiente**: Para ejecutar cada ejercicio, utilice el siguiente comando:
 ```python
