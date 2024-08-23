@@ -22,10 +22,10 @@ Para ejecutar los ejercicios, siga estos pasos:
 python NombreDelEjercicio
 ```
 
-Por ejemplo para los ejercicios, `Ejercicio4_1` y `Ejercicio8_1` utilice los comandos:
+Por ejemplo para los ejercicios, `Ejercicio8_2` y `Ejercicio8_3` utilice los comandos:
 ```python
-python Ejercicio4_1
-python Ejercicio8_1
+python Ejercicio8_2
+python Ejercicio8_3
 ```
 **no debe usar el sufijo `.py`**
 
