@@ -11,10 +11,10 @@ Este repositorio contiene una serie de actividades académicas realizadas en el 
 Para ejecutar los ejercicios, siga estos pasos:
 
 1. **Clonar el Repositorio**: Utilice el siguiente comando en su terminal para clonar el repositorio:
-<br/>`git clone --branch Actividad_4 "https://github.com/Cxx-mlr/POO-UNAL-2024-1.git"`
+<br/>`git clone --branch Actividad_5 "https://github.com/Cxx-mlr/POO-UNAL-2024-1.git"`
 
 2. **Navegar al Directorio de la Actividad**: Una vez clonado, acceda al directorio de la actividad. Ejecute:
-<br/>`cd "./POO-UNAL-2024-1/Actividad_4"`
+<br/>`cd "./POO-UNAL-2024-1/Actividad_5"`
 
 
 3. **Ejecutar el ejercicio correspondiente**: Para ejecutar cada ejercicio, utilice el siguiente comando:
