@@ -1,0 +1,49 @@
+Screen {
+  align: center middle;
+}
+
+#main-panel {
+  padding: 1;
+  layout: grid;
+  grid-size: 1;
+  grid-rows: auto;
+  grid-gutter: 1;
+  width: 70;
+  height: 17;
+  background: #efeeef;
+}
+
+#main-panel > * {
+  padding-left: 1;
+  padding-right: 1;
+}
+
+.label {
+  width: 13;
+  color: black;
+  padding-top: 1;
+  text-align: right;
+}
+
+.input {
+  height: 3;
+  width: 1fr;
+  background: white;
+}
+
+#buttons-container {
+  layout: grid;
+  grid-size: 1 2;
+  grid-gutter: 1;
+}
+
+#crud-buttons-container {
+  height: auto;
+  layout: grid;
+  grid-size: 4 1;
+  grid-gutter: 1;
+}
+
+#clear-button {
+  width: 100%;
+}

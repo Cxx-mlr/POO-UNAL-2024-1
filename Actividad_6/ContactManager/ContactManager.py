@@ -1,6 +1,7 @@
-
+from Friends.MainWindow import MainWindow
 
 class ContactManager:
 	@staticmethod
 	def main():
-		pass
+		app: MainWindow = MainWindow()
+		app.run()

@@ -1,0 +1,10 @@
+[project]
+name = "Actividad_6"
+version = "0.1.0"
+description = "Solución de la Actividad 6 del curso de Programación Orientada a Objetos."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic-settings>=2.4.0",
+    "textual>=0.79.1",
+]
