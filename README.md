@@ -4,9 +4,9 @@ Este repositorio contiene una serie de actividades académicas realizadas en el 
 
 ## Instrucciones para Ejecutar (python>=3.10)
 
-> Antes de ejecutar los ejercicios, es necesario contar con la biblioteca [Textual](https://github.com/Textualize/textual) instalada. Puede instalarla ejecutando el siguiente comando en su terminal:
+> Antes de ejecutar los ejercicios, es necesario instalar las dependencias del proyecto. Puede hacerlo utilizando el archivo requirements.txt con el siguiente comando en su terminal:
 >
-`python -m pip install -U textual`
+`python -m pip install -r requirements.txt`
 
 Para ejecutar los ejercicios, siga estos pasos:
 
