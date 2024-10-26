@@ -35,4 +35,4 @@ Se ha testeado y confirmado que los ejercicios funcionan correctamente en **Powe
 **Nota:** Se espera que el ejercicio sea compatible en cualquier consola que tenga python instalado
 
 **TODO:**
-1. Asegurar que el código siga las directrices de PEP8
+1. Asegurar que el código siga las directrices de PEP 8
