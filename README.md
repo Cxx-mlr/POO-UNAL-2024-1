@@ -28,4 +28,4 @@ Se ha testeado y confirmado que los ejercicios funcionan correctamente en **Powe
 **TODO:**
 1. Corregir compatibilidad con Git Bash
 2. Corregir compatibilidad con Termux
-3. Asegurar que el código siga las directrices de PEP8
+3. Asegurar que el código siga las directrices de PEP 8
