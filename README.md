@@ -11,7 +11,7 @@ El repositorio está organizado en ramas, donde cada rama corresponde a una acti
 - **`Actividad_3`**: Ejercicios que utilizan la biblioteca [Textual](https://github.com/Textualize/textual).
 - **`Actividad_4`**: Ejercicios avanzados con dependencias como [Textual](https://github.com/Textualize/textual) y [Faker](https://faker.readthedocs.io/en/master/).
 - **`Actividad_5`**: Ejercicios que exploran interfaces gráficas y diseño de aplicaciones usando [Textual](https://github.com/Textualize/textual).
-- **`Actividad_6`**: Proyecto final que requiere múltiples dependencias gestionadas mediante `requirements.txt`.
+- **`Actividad_6`**: Proyecto final que requiere múltiples dependencias gestionadas mediante `uv`.
 
 ### Rama `main`
 
